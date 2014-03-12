@@ -1188,7 +1188,7 @@ system.time(simulate_experiment(fasta, num_reps=numReps, reads_per_transcript=re
 </pre></div>
 
 <div class="output"><pre class="knitr r">##    user  system elapsed 
-##   56.80   11.73   70.30
+##   56.08   11.42   69.06
 </pre></div>
 
 <div class="source"><pre class="knitr r">
@@ -1204,35 +1204,15 @@ for(i in seq_len(nSamples)) {
 }
 
 ## Generated pairs info file for running Tophat
+{
 sink(file.path(outdir, "paired.txt"))
 for(i in seq_len(nSamples)) {
     cat(paste0("sample_", sprintf('%02d', i), "_1.fasta.gz\tsample_", sprintf('%02d', i), "_2.fasta.gz\tsample", i, "\n"))
 }
-</pre></div>
+sink()
+}
 
-<div class="output"><pre class="knitr r">## sample_01_1.fasta.gz    sample_01_2.fasta.gz    sample1
-## sample_02_1.fasta.gz sample_02_2.fasta.gz    sample2
-## sample_03_1.fasta.gz sample_03_2.fasta.gz    sample3
-## sample_04_1.fasta.gz sample_04_2.fasta.gz    sample4
-## sample_05_1.fasta.gz sample_05_2.fasta.gz    sample5
-## sample_06_1.fasta.gz sample_06_2.fasta.gz    sample6
-## sample_07_1.fasta.gz sample_07_2.fasta.gz    sample7
-## sample_08_1.fasta.gz sample_08_2.fasta.gz    sample8
-## sample_09_1.fasta.gz sample_09_2.fasta.gz    sample9
-## sample_10_1.fasta.gz sample_10_2.fasta.gz    sample10
-## sample_11_1.fasta.gz sample_11_2.fasta.gz    sample11
-## sample_12_1.fasta.gz sample_12_2.fasta.gz    sample12
-## sample_13_1.fasta.gz sample_13_2.fasta.gz    sample13
-## sample_14_1.fasta.gz sample_14_2.fasta.gz    sample14
-## sample_15_1.fasta.gz sample_15_2.fasta.gz    sample15
-## sample_16_1.fasta.gz sample_16_2.fasta.gz    sample16
-## sample_17_1.fasta.gz sample_17_2.fasta.gz    sample17
-## sample_18_1.fasta.gz sample_18_2.fasta.gz    sample18
-## sample_19_1.fasta.gz sample_19_2.fasta.gz    sample19
-## sample_20_1.fasta.gz sample_20_2.fasta.gz    sample20
-</pre></div>
-
-<div class="source"><pre class="knitr r">sink()
+## Check https://groups.google.com/forum/#!topic/knitr/TCz9vNLlslY for using sink() in knitr
 </pre></div>
 
 <p></div></div></p>
@@ -1254,7 +1234,7 @@ for(i in seq_len(nSamples)) {
 <div class="chunk" id="date"><div class="rcode"><div class="source"><pre class="knitr r">Sys.time()
 </pre></div>
 
-<div class="output"><pre class="knitr r">## [1] "2014-03-11 22:32:03 EDT"
+<div class="output"><pre class="knitr r">## [1] "2014-03-11 23:10:52 EDT"
 </pre></div>
 
 <p></div></div></p>

@@ -79,11 +79,15 @@ for(i in seq_len(nSamples)) {
 }
 
 ## Generated pairs info file for running Tophat
+{
 sink(file.path(outdir, "paired.txt"))
 for(i in seq_len(nSamples)) {
 	cat(paste0("sample_", sprintf('%02d', i), "_1.fasta.gz\tsample_", sprintf('%02d', i), "_2.fasta.gz\tsample", i, "\n"))
 }
 sink()
+}
+
+## Check https://groups.google.com/forum/#!topic/knitr/TCz9vNLlslY for using sink() in knitr
 ```
 
 # References

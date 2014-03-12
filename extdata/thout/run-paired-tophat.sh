@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Directories
-MAINDIR=/dcs01/lieber/ajaffe/Brain/derRuns/derfinderData/extdata/
+MAINDIR=/dcs01/lieber/ajaffe/Brain/derRuns/derfinderData/extdata
 WDIR=${MAINDIR}/thout
 DATADIR=${MAINDIR}/simulatedFasta
 
