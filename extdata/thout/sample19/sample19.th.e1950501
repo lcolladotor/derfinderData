@@ -1,0 +1,47 @@
+
+[2014-03-11 23:14:01] Beginning TopHat run (v2.0.9)
+-----------------------------------------------
+[2014-03-11 23:14:01] Checking for Bowtie
+		  Bowtie version:	 2.1.0.0
+[2014-03-11 23:14:01] Checking for Samtools
+		Samtools version:	 0.1.19.0
+[2014-03-11 23:14:01] Checking for Bowtie index files (transcriptome)..
+[2014-03-11 23:14:01] Checking for Bowtie index files (genome)..
+[2014-03-11 23:14:01] Checking for reference FASTA file
+[2014-03-11 23:14:01] Generating SAM header for /amber2/scratch/jleek/iGenomes-index/Homo_sapiens/UCSC/hg19/Sequence/Bowtie2Index/genome
+	format:		 fasta
+[2014-03-11 23:16:33] Reading known junctions from GTF file
+[2014-03-11 23:16:56] Preparing reads
+	 left reads: min. length=52, max. length=100, 45230 kept reads (1 discarded)
+	right reads: min. length=52, max. length=100, 45230 kept reads (1 discarded)
+[2014-03-11 23:17:01] Using pre-built transcriptome data..
+[2014-03-11 23:18:09] Mapping left_kept_reads to transcriptome known with Bowtie2 
+[2014-03-11 23:20:00] Mapping right_kept_reads to transcriptome known with Bowtie2 
+[2014-03-11 23:21:10] Resuming TopHat pipeline with unmapped reads
+[2014-03-11 23:21:10] Mapping left_kept_reads.m2g_um to genome genome with Bowtie2 
+[2014-03-11 23:21:53] Mapping left_kept_reads.m2g_um_seg1 to genome genome with Bowtie2 (1/4)
+[2014-03-11 23:22:15] Mapping left_kept_reads.m2g_um_seg2 to genome genome with Bowtie2 (2/4)
+[2014-03-11 23:22:31] Mapping left_kept_reads.m2g_um_seg3 to genome genome with Bowtie2 (3/4)
+[2014-03-11 23:22:42] Mapping left_kept_reads.m2g_um_seg4 to genome genome with Bowtie2 (4/4)
+[2014-03-11 23:22:50] Mapping right_kept_reads.m2g_um to genome genome with Bowtie2 
+[2014-03-11 23:23:10] Mapping right_kept_reads.m2g_um_seg1 to genome genome with Bowtie2 (1/4)
+[2014-03-11 23:23:24] Mapping right_kept_reads.m2g_um_seg2 to genome genome with Bowtie2 (2/4)
+[2014-03-11 23:23:48] Mapping right_kept_reads.m2g_um_seg3 to genome genome with Bowtie2 (3/4)
+[2014-03-11 23:24:00] Mapping right_kept_reads.m2g_um_seg4 to genome genome with Bowtie2 (4/4)
+[2014-03-11 23:24:08] Searching for junctions via segment mapping
+[2014-03-11 23:32:13] Retrieving sequences for splices
+[2014-03-11 23:36:41] Indexing splices
+[2014-03-11 23:39:02] Mapping left_kept_reads.m2g_um_seg1 to genome segment_juncs with Bowtie2 (1/4)
+[2014-03-11 23:40:26] Mapping left_kept_reads.m2g_um_seg2 to genome segment_juncs with Bowtie2 (2/4)
+[2014-03-11 23:41:31] Mapping left_kept_reads.m2g_um_seg3 to genome segment_juncs with Bowtie2 (3/4)
+[2014-03-11 23:42:49] Mapping left_kept_reads.m2g_um_seg4 to genome segment_juncs with Bowtie2 (4/4)
+[2014-03-11 23:43:55] Joining segment hits
+[2014-03-11 23:52:01] Mapping right_kept_reads.m2g_um_seg1 to genome segment_juncs with Bowtie2 (1/4)
+[2014-03-11 23:52:41] Mapping right_kept_reads.m2g_um_seg2 to genome segment_juncs with Bowtie2 (2/4)
+[2014-03-11 23:53:06] Mapping right_kept_reads.m2g_um_seg3 to genome segment_juncs with Bowtie2 (3/4)
+[2014-03-11 23:53:27] Mapping right_kept_reads.m2g_um_seg4 to genome segment_juncs with Bowtie2 (4/4)
+[2014-03-11 23:53:48] Joining segment hits
+[2014-03-12 00:00:06] Reporting output tracks
+-----------------------------------------------
+[2014-03-12 00:12:01] A summary of the alignment counts can be found in sample19/align_summary.txt
+[2014-03-12 00:12:01] Run complete: 00:58:00 elapsed

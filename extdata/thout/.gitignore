@@ -1,0 +1,9 @@
+## Empty log files
+sample*.th.p*
+sample*/sample*.th.p*
+
+## Output files
+sample*/*bed
+sample*/logs/
+sample*/prep_reads.info
+sample*/unmapped.bam
