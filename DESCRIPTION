@@ -1,8 +1,21 @@
 Package: derfinderData
-Title: 
-Description: 
+Title: Simulated data for illustrating derfinder's functions
+Description: Reads were generated for chromosome 22 hg19 transcripts with the
+    goal of illustrating how to use derfinder. The design is a two group
+    comparison with 10 samples per group with 20% differentially expressed
+    transcripts (10% higher in each group).
 Version: 0.0.1
-Authors@R: person("Leonardo", "Collado-Torres", role = c("aut", "cre"), email = "lcollado@jhsph.edu")
-Depends: R (>= 3.0.2)
-License:
+Date: 2014-03-12
+Authors@R: person("Leonardo", "Collado-Torres", role = c("aut", "cre"), email =
+    "lcollado@jhsph.edu")
+Depends:
+    R (>= 3.0.2)
+Suggests:
+    knitcitations,
+    knitr,
+    knitrBootstrap,
+    Biostrings,
+    R.utils
+License: Artistic-2.0
+URL: https://github.com/lcolladotor/derfinderData
 LazyData: true
