@@ -1,0 +1,8 @@
+Package: derfinderData
+Title: 
+Description: 
+Version: 0.0.1
+Authors@R: person("Leonardo", "Collado-Torres", role = c("aut", "cre"), email = "lcollado@jhsph.edu")
+Depends: R (>= 3.0.2)
+License:
+LazyData: true

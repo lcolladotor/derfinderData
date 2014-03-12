@@ -1,0 +1,112 @@
+Simulate reads
+==============
+
+
+```{r "bibsetup", echo=FALSE, message=FALSE, warning=FALSE}
+## Load knitcitations with a clean bibliography
+library("knitcitations")
+cleanbib()
+cite_options(tooltip=TRUE)
+
+## I made my own citing function since citep() doesn't work like I want to with
+## urls that are not really pages themselves like part of a GitHub repo.
+mycitep <- function(x, short=NULL, year=substr(date(), 21, 24), tooltip=TRUE) {
+	res <- tmp <- citep(x)
+	if(!is.null(short)) {
+		res <- gsub("></a>", paste0(">", short, "</a>"), tmp)
+	}		
+	if(tooltip) {
+		res <- gsub("\\?\\?\\?\\?", year, res)
+	}
+	res <- gsub("span> ", "span>", res)
+	res
+}
+
+write.bibtex(c("knitcitations" = citation("knitcitations"), "knitrBootstrap" = citation("knitrBootstrap"), "knitr" = citation("knitr"), "polyester" = citation("polyester")), file = "simReads.bib")
+bib <- read.bibtex("simReads.bib")
+```
+
+
+The following script generates the random reads for 2 groups of samples (10 each) with a total of 20% of differentially expressed genes (half more expressed in group 1, half in group 2) for chromosome 22 of the hg19 human genome reference. The code is based on `/amber2/scratch/jleek/RNASeqSim/original/paper_sim/simulateReads.R` written by Alyssa Frazee. The main package for generating the simulations is `polyester` `r mycitep(bib[["polyester"]], "Frazee et al, 2014")` which is currently not publicly available.
+
+# Simulation
+
+```{r "generateReads"}
+## Setup
+library("Biostrings")
+library("polyester")
+library("R.utils")
+
+## Simulation main parameters
+nSamples <- 20
+percentDE <- 0.2
+numReps <- nSamples / 2
+disp <- 10
+outdir <- "simulatedFasta"
+readsPerTrans <- 50
+
+## Locate fasta file, has 918 transcripts
+fasta <- system.file("data", "chr22.fa", package="polyester")
+trans <- readDNAStringSet(fasta)
+nTranscripts <- length(trans)
+
+## Calculate the fold changes
+foldChanges <- rep(1, nTranscripts)
+set.seed(20140311)
+isDE <- runif(length(foldChanges))
+deUp <- which(isDE < percentDE)[seq(1, sum(isDE < percentDE), by=2)]
+deDown <- which(isDE < percentDE)[seq(2, sum(isDE < percentDE), by=2)]
+foldChanges[deUp] <- rep(c(2, 5), length=length(deUp))
+foldChanges[deDown] <- rep(c(0.5, 0.2), length=length(deDown))
+
+## Explore the resulting fold changes
+table(foldChanges)
+table(foldChanges) / nTranscripts * 100
+
+## Simulate reads
+dir.create(outdir)
+system.time(simulate_experiment(fasta, num_reps=numReps, reads_per_transcript=readsPerTrans, dispersion_param=disp, fold_changes=foldChanges, outdir=paste0(outdir, "/")))
+
+## Write the true fold change for each transcript
+truth <- data.frame(foldChange=foldChanges, transcript=names(trans))
+write.table(truth, file=file.path(outdir, "trueFoldChange.txt"), sep="\t", quote=FALSE, row.names=FALSE, col.names=TRUE)
+
+## gzip fasta files
+for(i in seq_len(nSamples)) {
+	for(j in 1:2) {
+		gzip(file.path(outdir, paste0("sample_", sprintf('%02d', i), "_", j, ".fasta")))
+	}
+}
+
+## Generated pairs info file for running Tophat
+sink(file.path(outdir, "paired.txt"))
+for(i in seq_len(nSamples)) {
+	cat(paste0("sample_", sprintf('%02d', i), "_1.fasta.gz\tsample_", sprintf('%02d', i), "_2.fasta.gz\tsample", i, "\n"))
+}
+sink()
+```
+
+# References
+
+Report made with `knitrBootstrap` `r mycitep(bib[["knitrBootstrap"]])`. Citations made with `knitcitations` `r mycitep(bib[["knitcitations"]], "Boettiger, 2013")`. 
+
+
+```{r "bibliography", results='asis', echo=FALSE, cache=FALSE}
+## Print bibliography
+bibliography()
+```
+
+# Reproducibility
+
+Date this report was generated
+
+```{r "date"}
+Sys.time()
+```
+
+R session information
+
+```{r "session"}
+sessionInfo()
+```
+
