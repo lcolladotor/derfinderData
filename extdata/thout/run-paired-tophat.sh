@@ -22,7 +22,7 @@ cat paired.txt | while read x
 	file1=$(echo "$x" | cut -f1)
 	file2=$(echo "$x" | cut -f2)
 	# Actually create the script
-	echo "Creating script for file $fastq corresponding to $libname"
+	echo "Creating script for ${libname}"
 	cat > ${WDIR}/.${libname}.th.sh <<EOF
 #!/bin/bash	
 echo "**** Job starts ****"
@@ -32,7 +32,7 @@ date
 # defaults for polyester::simulate_experiment() are 100 bp paired reads from 250bp fragments with 25bp sd
 tophat -p ${P} --transcriptome-index=${TRANSINDEX} --mate-inner-dis=50 --mate-std-dev=25 -o ${libname} ${GENOMEINDEX} ${DATADIR}/${file1} ${DATADIR}/${file2}
 
-mv ${libname}.* ${libname}/
+mv ${WDIR}/${libname}.* ${WDIR}/${libname}/
 echo "**** Job ends ****"
 date
 EOF
